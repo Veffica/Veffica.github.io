@@ -2,6 +2,8 @@ import * as THREE from '../libs/three137/three.module.js';
 import { GLTFLoader } from '../libs/three137/GLTFLoader.js';
 //import { RGBELoader } from '../libs/three137/RGBELoader.js';
 import { NPCHandler } from './NPCHandler.js';
+import { User } from './User.js';
+import { Controller } from './Controller.js';
 //import { LoadingBar } from '../libs/LoadingBar.js';
 import { Pathfinding } from '../libs/pathfinding/Pathfinding.js';
 import {OrbitControls} from '../libs/three137/OrbitControls.js';
@@ -20,7 +22,8 @@ class Game{
         
 		this.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.001, 5000 );
 
-		this.camera.position.set( -1.3, 1.5, -10 );
+
+		this.camera.position.set(-3.83, 1.5, -5.11);
 		
 		let col = 0x201510;
 		this.scene = new THREE.Scene();
@@ -111,7 +114,9 @@ class Game{
 	load(){
         this.loadEnvironment();
 		this.npcHandler = new NPCHandler(this);
-    }
+		this.user = new User(this, new THREE.Vector3(-3.83, -0.13, -5.11), 0.875 ); //Os tres parametros sao: a propria classe Game, a posição onde quero que o player fique, a direção em que ele vai apontar
+			//o head está 0.875 para fazer a camera apontar com as setas para a direção correta
+	}
 
     loadEnvironment(){
     	const loader = new GLTFLoader( ).setPath(`${this.assetsPath}`);
@@ -142,6 +147,8 @@ class Game{
 						}
 					}
 				});
+
+				this.controller = new Controller(this);
 
 				this.scene.add(this.navmesh);
 
@@ -174,6 +181,10 @@ class Game{
 		const dt = this.clock.getDelta();
 
 		if (this.npcHandler !== undefined ) this.npcHandler.update(dt);
+		if (this.user !== undefined && this.user.ready ){
+			this.user.update(dt);
+			if (this.controller !== undefined) this.controller.update(dt);
+		}
 
         this.renderer.render( this.scene, this.camera );
 
