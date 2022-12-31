@@ -141,7 +141,7 @@ class Game{
 							this.navmesh.geometry.rotateX( Math.PI/2 );
 							this.navmesh.quaternion.identity();
 							this.navmesh.position.set(0,0,0);
-							child.material.visible = true;
+							child.material.visible = false;
 							child.material.transparent = true;
 							child.material.opacity = 0.5;
 	
