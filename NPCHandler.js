@@ -108,6 +108,123 @@ class NPCHandler{
 			
 			this.npcs.push(npc);
 
+			//Adding gamepad button 4 to record
+			var gamepadInfo = document.getElementById("gamepad-info");
+			var start;
+			var rAF = window.mozRequestAnimationFrame ||
+  			window.webkitRequestAnimationFrame ||
+  			window.requestAnimationFrame;
+
+			var rAFStop = window.mozCancelRequestAnimationFrame ||
+			window.webkitCancelRequestAnimationFrame ||
+			window.cancelRequestAnimationFrame;
+
+			document.addEventListener("gamepadconnected", function() {
+				var gp = navigator.getGamepads()[0];
+				gamepadInfo.innerHTML = "Gamepad connected at index " + gp.index + ": " + gp.id + ". It has " + gp.buttons.length + " buttons and " + gp.axes.length + " axes.";
+			  
+				if(navigator.webkitGetGamepads) {
+					var gp = navigator.webkitGetGamepads()[0];
+				
+					if(gp.buttons[4] == 1) {
+						const SpeechRecognition =  window.SpeechRecognition || window.webkitSpeechRecognition;
+				 
+						let recognition = new SpeechRecognition(); //criou uma instance
+				
+						recognition.onstart = () => {  //inicia quando aperta espaço
+							//console.log("starting listening, speak in microphone");
+						}
+				
+						recognition.onspeechend = () => {  //inicia quando para de ouvir pessoa falando
+							//console.log("stopped listening");
+							recognition.stop();
+						}
+				
+						recognition.onresult = (result) => {   //mostra no console o resultado da frase falada atraves de uma arrow function
+						var frase = result.results[0][0].transcript;
+						console.log(frase);
+						
+								switch(frase){
+											
+								  case 'go to the kitchen':
+									  increment();
+									  npc.newPath(npc.waypoints[0]);
+									  break;
+	  
+								  case 'door':
+									  increment();  
+									  npc.newPath(npc.waypoints[1]);
+									  //npc.action = 'firing';
+									  break;
+	  
+									case 'go to the TV room':
+									  //npc.action = 'Firing';
+									  increment(); 
+									  npc.newPath(npc.waypoints[2]);
+									  break;
+								  
+								  case 'go back':
+									  increment();
+									  npc.newPath(npc.waypoints[3]);
+									  break;
+	  
+								  case 'go to the corridor':
+									  increment();
+									  npc.newPath(npc.waypoints[3]);
+									  break;
+									  
+								  case 'go to the middle':
+									  increment();
+									  npc.newPath(npc.waypoints[4]);
+									  break;
+	  
+								  case 'die':
+									  npc.action='Shot'
+									  increment();
+									  //npc.newPath(npc.waypoints[4]);
+									  break;
+	  
+									  
+								  case 'shoot':
+									  increment();
+									  npc.action='Firing';
+	  
+									  //npc.newPath(npc.waypoints[4]);
+									  break;
+								  
+								  default:
+									  npc.action = 'Idle'; 
+					
+									}		
+						 }			   
+						 recognition.start();
+					 }
+					} 
+			  });
+
+			  window.addEventListener("gamepaddisconnected", function() {
+				gamepadInfo.innerHTML = "Waiting for gamepad.";
+			  
+				rAFStop(start);
+			  });
+
+			  if(navigator.webkitGetGamepads) {
+				// Webkit browser that uses prefixes
+				var interval = setInterval(webkitGP, 500);
+			  }
+			  
+			  function webkitGP() {
+				var gp = navigator.webkitGetGamepads()[0];
+				if(gp) {
+				  gamepadInfo.innerHTML = "Gamepad connected at index " + gp.index + ": " + gp.id + ". It has " + gp.buttons.length + " buttons and " + gp.axes.length + " axes.";
+				  gameLoop();
+				  clearInterval(interval);
+				}
+			  }
+
+
+
+			//Adding press space to record
 			document.addEventListener('keydown', keyDown);
 		
 			function keyDown(e){  
