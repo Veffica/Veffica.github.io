@@ -127,7 +127,7 @@ class Controller{
                 this.keys.d = true;
                 break;
             case 32:
-                this.fire();
+                this.voice();
                 break;                                           
         }
     }
@@ -202,8 +202,31 @@ class Controller{
         const fire = gamepad.buttons[7].pressed;
         this.onMove(-leftStickY, leftStickX);
         this.onLook(-rightStickY, rightStickX);
-        if (fire) this.fire();
+        if (fire) this.voice();
     }
+    
+    voice(){
+        const SpeechRecognition =  window.SpeechRecognition || window.webkitSpeechRecognition;
+				 
+				  let recognition = new SpeechRecognition(); //criou uma instance
+		  
+				  recognition.onstart = () => {  //inicia quando aperta espaço
+					  //console.log("starting listening, speak in microphone");
+				  }
+		  
+				  recognition.onspeechend = () => {  //inicia quando para de ouvir pessoa falando
+					  //console.log("stopped listening");
+					  recognition.stop();
+				  }
+		  
+				  recognition.onresult = (result) => {   //mostra no console o resultado da frase falada atraves de uma arrow function
+				  var frase = result.results[0][0].transcript;
+				  console.log('A frase é: ' + frase);	
+				   }			   
+				   recognition.start();
+
+                   console.log('chamou voice');
+   }
 
     keyHandler(){
         if (this.keys.w) this.move.up += 0.1;
