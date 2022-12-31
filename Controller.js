@@ -59,7 +59,7 @@ class Controller{
 
             const fireBtn = document.createElement("div");
             fireBtn.style.cssText = "position:absolute; bottom:55px; width:40px; height:40px; background:#FFFFFF; border:#444 solid medium; border-radius:50%; left:50%; transform:translateX(-50%);";
-            fireBtn.addEventListener('click', this.fire.bind(this));
+            fireBtn.addEventListener('click', this.voice.bind(this));
             document.body.appendChild(fireBtn);
 
             this.touchController = { joystick1, joystick2, fireBtn };
