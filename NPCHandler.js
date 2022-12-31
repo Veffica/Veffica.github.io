@@ -111,6 +111,7 @@ class NPCHandler{
 			//Adding gamepad button 4 to record
 			var gamepadInfo = document.getElementById("gamepad-info");
 			var start;
+			
 			var rAF = window.mozRequestAnimationFrame ||
   			window.webkitRequestAnimationFrame ||
   			window.requestAnimationFrame;
@@ -121,7 +122,6 @@ class NPCHandler{
 
 			document.addEventListener("gamepadconnected", function() {
 				var gp = navigator.getGamepads()[0];
-				gamepadInfo.innerHTML = "Gamepad connected at index " + gp.index + ": " + gp.id + ". It has " + gp.buttons.length + " buttons and " + gp.axes.length + " axes.";
 			  
 				if(navigator.webkitGetGamepads) {
 					var gp = navigator.webkitGetGamepads()[0];
@@ -207,22 +207,6 @@ class NPCHandler{
 			  
 				rAFStop(start);
 			  });
-
-			  if(navigator.webkitGetGamepads) {
-				// Webkit browser that uses prefixes
-				var interval = setInterval(webkitGP, 500);
-			  }
-			  
-			  function webkitGP() {
-				var gp = navigator.webkitGetGamepads()[0];
-				if(gp) {
-				  gamepadInfo.innerHTML = "Gamepad connected at index " + gp.index + ": " + gp.id + ". It has " + gp.buttons.length + " buttons and " + gp.axes.length + " axes.";
-				  gameLoop();
-				  clearInterval(interval);
-				}
-			  }
-
-
 
 			//Adding press space to record
 			document.addEventListener('keydown', keyDown);
