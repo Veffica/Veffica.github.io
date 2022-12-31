@@ -116,6 +116,7 @@ class Game{
 		this.npcHandler = new NPCHandler(this);
 		this.user = new User(this, new THREE.Vector3(-3.83, -0.13, -5.11), 0.875 ); //Os tres parametros sao: a propria classe Game, a posição onde quero que o player fique, a direção em que ele vai apontar
 			//o head está 0.875 para fazer a camera apontar com as setas para a direção correta
+			this.user.rotateY = Math.PI/4;
 	}
 
     loadEnvironment(){
