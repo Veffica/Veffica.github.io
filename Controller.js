@@ -199,7 +199,7 @@ class Controller{
         const leftStickY = gamepad.axes[1];
         const rightStickX = gamepad.axes[2];
         const rightStickY = gamepad.axes[3];
-        const fire = gamepad.buttons[7].pressed;
+        const fire = gamepad.buttons[4].pressed;
         this.onMove(-leftStickY, leftStickX);
         this.onLook(-rightStickY, rightStickX);
         if (fire) this.voice();
