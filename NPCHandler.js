@@ -265,7 +265,7 @@ function increment(){
 	console.log(counter);
 }
 
-function gamepadHandler(){
+function gamepadHandler(e){
 	const gamepads = navigator.getGamepads();
 	const gamepad = gamepads[this.gamepad.index];
 	const fire = gamepad.buttons[4].pressed;
