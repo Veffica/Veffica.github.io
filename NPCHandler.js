@@ -248,7 +248,7 @@ class NPCHandler{
         const gamepad = gamepads[this.gamepad.index];
         const fire = gamepad.buttons[4].pressed;
         if (fire) {
-			keyDown();
+			console.log('opaaaa! botao apertado');
 		}
     }
 
