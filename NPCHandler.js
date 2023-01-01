@@ -231,16 +231,12 @@ class NPCHandler{
             if (connecting) {
                 gamepads[gamepad.index] = gamepad;
                 self.gamepad = gamepad;
-                if (self.touchController) self.showTouchController(false);
-            } else {
-                delete self.gamepad;
-                delete gamepads[gamepad.index];
-                if (self.touchController) self.showTouchController(true);
-            }
+               
+            } 
         }
 
-        window.addEventListener("gamepadconnected", function(e) { gamepadHandler(e, true); }, false);
-        window.addEventListener("gamepaddisconnected", function(e) { gamepadHandler(e, false); }, false);
+        document.addEventListener("gamepadconnected", function(e) { gamepadHandler(e, true); }, false);
+        document.addEventListener("gamepaddisconnected", function(e) { gamepadHandler(e, false); }, false);
     }
 
 	gamepadHandler(){
