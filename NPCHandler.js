@@ -12,7 +12,6 @@ class NPCHandler{
 		//this.loadingBar = this.game.loadingBar;
         this.load();
 		this.initMouseHandler();
-		this.checkForGamepad();
 	}
 
 	initMouseHandler(){
@@ -110,6 +109,22 @@ class NPCHandler{
 			this.npcs.push(npc);
 
 			//Adding gamepad
+			const gamepads = {};
+
+       		const self = this;
+
+			function gamepadHandler(event, connecting) {
+				const gamepad = event.gamepad;
+
+				if (connecting) {
+					gamepads[gamepad.index] = gamepad;
+					self.gamepad = gamepad;
+				
+				} 
+			}
+
+			document.addEventListener("gamepadconnected", function(e) { gamepadHandler(e, true); }, false);
+			document.addEventListener("gamepaddisconnected", function(e) { gamepadHandler(e, false); }, false);
 
 
 			//Adding press space to record e chama a funcão keydown
@@ -220,7 +235,7 @@ class NPCHandler{
 		return this.waypoints[4];
 	}
 
-	checkForGamepad(){
+	/*checkForGamepad(){
         const gamepads = {};
 
         const self = this;
@@ -237,16 +252,7 @@ class NPCHandler{
 
         document.addEventListener("gamepadconnected", function(e) { gamepadHandler(e, true); }, false);
         document.addEventListener("gamepaddisconnected", function(e) { gamepadHandler(e, false); }, false);
-    }
-
-	gamepadHandler(){
-        const gamepads = navigator.getGamepads();
-        const gamepad = gamepads[this.gamepad.index];
-        const fire = gamepad.buttons[4].pressed;
-        if (fire) {
-			console.log('opaaaa! botao apertado');
-		}
-    }
+    }*/
 
     update(dt){
         if (this.npcs) this.npcs.forEach( npc => npc.update(dt) );
@@ -257,6 +263,15 @@ class NPCHandler{
 function increment(){
 	counter = counter + 1;
 	console.log(counter);
+}
+
+function gamepadHandler(){
+	const gamepads = navigator.getGamepads();
+	const gamepad = gamepads[this.gamepad.index];
+	const fire = gamepad.buttons[4].pressed;
+	if (fire) {
+		console.log('opaaaa! botao apertado');
+	}
 }
 
 function keyDown(e){  
@@ -284,6 +299,11 @@ function keyDown(e){
 			  switch(frase){
 						  
 				case 'go to the kitchen':
+					increment();
+					npc.newPath(npc.waypoints[0]);
+					break;
+
+				case 'go to the Kitchen':
 					increment();
 					npc.newPath(npc.waypoints[0]);
 					break;
