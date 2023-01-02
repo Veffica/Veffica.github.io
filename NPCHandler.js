@@ -169,6 +169,7 @@ class NPCHandler{
        
         if (fire) {
 			console.log('apertou o botão e deu certo')
+			keyDown();
 		}
     }
 
