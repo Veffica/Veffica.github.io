@@ -162,7 +162,7 @@ class NPCHandler{
 	gamepadHandler(){
         const gamepads = navigator.getGamepads();
         const gamepad = gamepads[this.gamepad.index];
-        c
+        
         const fire = gamepad.buttons[4].pressed;
        
         if (fire) {
