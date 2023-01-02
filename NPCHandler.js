@@ -113,6 +113,9 @@ class NPCHandler{
 			//Adding gamepad
 			this.checkForGamepad();
 
+			document.addEventListener("gamepadconnected", function(e) { gamepadHandler(e, true); }, false);
+       		document.addEventListener("gamepaddisconnected", function(e) { gamepadHandler(e, false); }, false);
+
 			//Adding press space to record e chama a funcão keydown
 			document.addEventListener('keydown', keyDown);
 		});
@@ -154,8 +157,8 @@ class NPCHandler{
             }
         }
 
-        window.addEventListener("gamepadconnected", function(e) { gamepadHandler(e, true); }, false);
-        window.addEventListener("gamepaddisconnected", function(e) { gamepadHandler(e, false); }, false);
+        //document.addEventListener("gamepadconnected", function(e) { gamepadHandler(e, true); }, false);
+        //document.addEventListener("gamepaddisconnected", function(e) { gamepadHandler(e, false); }, false);
     }
 
 	gamepadHandler(){
@@ -248,9 +251,9 @@ class NPCHandler{
     update(dt){
         if (this.npcs) this.npcs.forEach( npc => npc.update(dt) );
 
-		if (this.gamepad){
+		/*if (this.gamepad){
             this.gamepadHandler();
-    }
+    }*/
 	}
 }
 
