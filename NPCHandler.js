@@ -113,9 +113,6 @@ class NPCHandler{
 			//Adding gamepad
 			this.checkForGamepad();
 
-
-
-
 			//Adding press space to record e chama a funcão keydown
 			document.addEventListener('keydown', keyDown);
 		});
@@ -173,94 +170,13 @@ class NPCHandler{
 		}
     }
 
-	voice(){
-	  const SpeechRecognition =  window.SpeechRecognition || window.webkitSpeechRecognition;
-	 
-	  let recognition = new SpeechRecognition(); //criou uma instance
-
-	  recognition.onstart = () => {  //inicia quando aperta espaço
-		  //console.log("starting listening, speak in microphone");
-	  }
-
-	  recognition.onspeechend = () => {  //inicia quando para de ouvir pessoa falando
-		  //console.log("stopped listening");
-		  recognition.stop();
-	  }
-
-	  recognition.onresult = (result) => {   //mostra no console o resultado da frase falada atraves de uma arrow function
-	  var frase = result.results[0][0].transcript;
-	  console.log(frase);
-	  
-			  switch(frase){
-						  
-				case 'go to the kitchen':
-					increment();
-					npc.newPath(npc.waypoints[0]);
-					break;
-
-				case 'go to the Kitchen':
-					increment();
-					npc.newPath(npc.waypoints[0]);
-					break;
-
-				case 'door':
-					increment();  
-					npc.newPath(npc.waypoints[1]);
-					//npc.action = 'firing';
-					break;
-
-				  case 'go to the TV room':
-					//npc.action = 'Firing';
-					increment(); 
-					npc.newPath(npc.waypoints[2]);
-					break;
-				
-				case 'go back':
-					increment();
-					npc.newPath(npc.waypoints[3]);
-					break;
-
-				case 'go to the corridor':
-					increment();
-					npc.newPath(npc.waypoints[3]);
-					break;
-					
-				case 'go to the middle':
-					increment();
-					npc.newPath(npc.waypoints[4]);
-					break;
-
-				case 'die':
-					npc.action='Shot'
-					increment();
-					//npc.newPath(npc.waypoints[4]);
-					break;
-
-					
-				case 'shoot':
-					increment();
-					npc.action='Firing';
-
-					//npc.newPath(npc.waypoints[4]);
-					break;
-				
-				default:
-					npc.action = 'Idle'; 
-  
-				  }		
-	   }			   
-	   recognition.start();
-		
-	}
-
     update(dt){
         if (this.npcs) this.npcs.forEach( npc => npc.update(dt) );
 
 		if (this.gamepad){
             this.gamepadHandler();
     }
-}
-
+	}
 }
 
 function increment(){
@@ -271,88 +187,8 @@ function increment(){
 function keyDown(e){  
 				
 	if (e.code=='Space'){
-
-	
 		voice();
-	   //console.log('pressed');
-	  /*const SpeechRecognition =  window.SpeechRecognition || window.webkitSpeechRecognition;
-	 
-	  let recognition = new SpeechRecognition(); //criou uma instance
-
-	  recognition.onstart = () => {  //inicia quando aperta espaço
-		  //console.log("starting listening, speak in microphone");
-	  }
-
-	  recognition.onspeechend = () => {  //inicia quando para de ouvir pessoa falando
-		  //console.log("stopped listening");
-		  recognition.stop();
-	  }
-
-	  recognition.onresult = (result) => {   //mostra no console o resultado da frase falada atraves de uma arrow function
-	  var frase = result.results[0][0].transcript;
-	  console.log(frase);
-	  
-			  switch(frase){
-						  
-				case 'go to the kitchen':
-					increment();
-					npc.newPath(npc.waypoints[0]);
-					break;
-
-				case 'go to the Kitchen':
-					increment();
-					npc.newPath(npc.waypoints[0]);
-					break;
-
-				case 'door':
-					increment();  
-					npc.newPath(npc.waypoints[1]);
-					//npc.action = 'firing';
-					break;
-
-				  case 'go to the TV room':
-					//npc.action = 'Firing';
-					increment(); 
-					npc.newPath(npc.waypoints[2]);
-					break;
-				
-				case 'go back':
-					increment();
-					npc.newPath(npc.waypoints[3]);
-					break;
-
-				case 'go to the corridor':
-					increment();
-					npc.newPath(npc.waypoints[3]);
-					break;
-					
-				case 'go to the middle':
-					increment();
-					npc.newPath(npc.waypoints[4]);
-					break;
-
-				case 'die':
-					npc.action='Shot'
-					increment();
-					//npc.newPath(npc.waypoints[4]);
-					break;
-
-					
-				case 'shoot':
-					increment();
-					npc.action='Firing';
-
-					//npc.newPath(npc.waypoints[4]);
-					break;
-				
-				default:
-					npc.action = 'Idle'; 
-  
-				  }		
-	   }			   
-	   recognition.start();
-   }*/
-}
+	}
 }	
 
 function voice(){
