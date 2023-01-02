@@ -251,9 +251,9 @@ class NPCHandler{
     update(dt){
         if (this.npcs) this.npcs.forEach( npc => npc.update(dt) );
 
-		/*if (this.gamepad){
+		if (this.gamepad){
             this.gamepadHandler();
-    }*/
+    }
 	}
 }
 
