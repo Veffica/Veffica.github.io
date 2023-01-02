@@ -12,6 +12,8 @@ class NPCHandler{
 		//this.loadingBar = this.game.loadingBar;
         this.load();
 		this.initMouseHandler();
+		this.checkForGamepad();
+
 	}
 
 	initMouseHandler(){
@@ -109,108 +111,13 @@ class NPCHandler{
 			this.npcs.push(npc);
 
 			//Adding gamepad
-			const gamepads = {};
+			document.addEventListener("gamepadconnected", gamePad);
 
-       		const self = this;
-
-			function gamepadHandler(event, connecting) {
-				const gamepad = event.gamepad;
-
-				if (connecting) {
-					gamepads[gamepad.index] = gamepad;
-					self.gamepad = gamepad;
-				
-				} 
-			}
-
-			document.addEventListener("gamepadconnected", function(e) { gamepadHandler(e, true); }, false);
-			document.addEventListener("gamepaddisconnected", function(e) { gamepadHandler(e, false); }, false);
 
 
 			//Adding press space to record e chama a funcão keydown
 			document.addEventListener('keydown', keyDown);
-		
-			/*function keyDown(e){  
-				
-				if (e.code=='Space'){
-		  
-				   //console.log('pressed');
-				  const SpeechRecognition =  window.SpeechRecognition || window.webkitSpeechRecognition;
-				 
-				  let recognition = new SpeechRecognition(); //criou uma instance
-		  
-				  recognition.onstart = () => {  //inicia quando aperta espaço
-					  //console.log("starting listening, speak in microphone");
-				  }
-		  
-				  recognition.onspeechend = () => {  //inicia quando para de ouvir pessoa falando
-					  //console.log("stopped listening");
-					  recognition.stop();
-				  }
-		  
-				  recognition.onresult = (result) => {   //mostra no console o resultado da frase falada atraves de uma arrow function
-				  var frase = result.results[0][0].transcript;
-				  console.log(frase);
-				  
-						  switch(frase){
-									  
-							case 'go to the kitchen':
-								increment();
-								npc.newPath(npc.waypoints[0]);
-								break;
-
-							case 'door':
-								increment();  
-								npc.newPath(npc.waypoints[1]);
-								//npc.action = 'firing';
-								break;
-
-							  case 'go to the TV room':
-								//npc.action = 'Firing';
-								increment(); 
-								npc.newPath(npc.waypoints[2]);
-								break;
-							
-							case 'go back':
-								increment();
-								npc.newPath(npc.waypoints[3]);
-								break;
-
-							case 'go to the corridor':
-								increment();
-								npc.newPath(npc.waypoints[3]);
-								break;
-								
-							case 'go to the middle':
-								increment();
-								npc.newPath(npc.waypoints[4]);
-								break;
-
-							case 'die':
-								npc.action='Shot'
-								increment();
-								//npc.newPath(npc.waypoints[4]);
-								break;
-
-								
-							case 'shoot':
-								increment();
-								npc.action='Firing';
-
-								//npc.newPath(npc.waypoints[4]);
-								break;
-							
-							default:
-								npc.action = 'Idle'; 
-			  
-							  }		
-				   }			   
-				   recognition.start();
-			   }
-			}*/
 		});
-
-		//this.loadingBar.visible = !this.loadingBar.loaded;
 
 		this.game.startRendering();
 	}
@@ -235,7 +142,7 @@ class NPCHandler{
 		return this.waypoints[4];
 	}
 
-	/*checkForGamepad(){
+	checkForGamepad(){
         const gamepads = {};
 
         const self = this;
@@ -246,32 +153,37 @@ class NPCHandler{
             if (connecting) {
                 gamepads[gamepad.index] = gamepad;
                 self.gamepad = gamepad;
-               
-            } 
+            }
         }
 
-        document.addEventListener("gamepadconnected", function(e) { gamepadHandler(e, true); }, false);
-        document.addEventListener("gamepaddisconnected", function(e) { gamepadHandler(e, false); }, false);
-    }*/
+        window.addEventListener("gamepadconnected", function(e) { gamepadHandler(e, true); }, false);
+        window.addEventListener("gamepaddisconnected", function(e) { gamepadHandler(e, false); }, false);
+    }
+
+	gamepadHandler(){
+        const gamepads = navigator.getGamepads();
+        const gamepad = gamepads[this.gamepad.index];
+        c
+        const fire = gamepad.buttons[4].pressed;
+       
+        if (fire) {
+			console.log('apertou o botão e deu certo')
+		}
+    }
 
     update(dt){
         if (this.npcs) this.npcs.forEach( npc => npc.update(dt) );
+
+		if (this.gamepad){
+            this.gamepadHandler();
     }
+}
 
 }
 
 function increment(){
 	counter = counter + 1;
 	console.log(counter);
-}
-
-function gamepadHandler(e){
-	const gamepads = navigator.getGamepads();
-	const gamepad = gamepads[this.gamepad.index];
-	const fire = gamepad.buttons[4].pressed;
-	if (fire) {
-		console.log('opaaaa! botao apertado');
-	}
 }
 
 function keyDown(e){  
