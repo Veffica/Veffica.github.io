@@ -111,7 +111,6 @@ class NPCHandler{
 			this.npcs.push(npc);
 
 			//Adding gamepad
-			document.addEventListener("gamepadconnected", gamePad);
 
 
 
