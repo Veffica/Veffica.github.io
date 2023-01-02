@@ -12,7 +12,7 @@ class NPCHandler{
 		//this.loadingBar = this.game.loadingBar;
         this.load();
 		this.initMouseHandler();
-		this.checkForGamepad();
+	//	this.checkForGamepad();
 
 	}
 
@@ -111,6 +111,8 @@ class NPCHandler{
 			this.npcs.push(npc);
 
 			//Adding gamepad
+			this.checkForGamepad();
+
 
 
 
