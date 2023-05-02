@@ -162,7 +162,7 @@ class Game{
 			// resource URL
 
 			//'house9.glb',
-            'cityTwo.glb',
+            'college.glb',
 
 			// called when the resource is loaded
 			gltf => {
