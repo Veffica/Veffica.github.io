@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js vr - cubes</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+		<style>
+			body{
+				margin: 0;
+				padding: 0;
+				background-color:#fffafa;     
+				width: 100%;
+				min-height: 100%;
+				overflow: hidden;
+			}  
+	
+	
+			button.fs:hover{
+				font-size: 30px;
+				background-color: green;
+				border-color: black;
+			}
+	
+			button.vr:hover{
+				font-size: 30px;
+				background-color: green;
+				border-color: black;
+			}
+	
+			button.mic:hover{
+				border-color: black;
+			}
+	
+			button.vr{
+				position:absolute; 
+				bottom:30%; 
+				width:200px; 
+				height:40px; 
+				background:rgba(126, 126, 126, 0.5); 
+				border:#444 solid medium;
+				border-radius:5px;
+				left:45%; 
+				font-size: 15px;
+				
+			}
+	
+			button.fs{
+				position:absolute; 
+				bottom:45%; 
+				width:200px; 
+				height:40px; 
+				background:rgba(126, 126, 126, 0.5); 
+				border:#444 solid medium;
+				border-radius:5px;
+				left:45%; 
+				opacity: 1.0;
+	
+			}
+	
+			button.ex{
+				position:absolute; 
+				margin: 0px;
+				padding: 0px;
+				bottom:91%; 
+				width:35px; 
+				height:35px; 
+				border-width: 0px;
+				background:transparent; 
+				left:95%
+			}
+	
+			button.mic{
+				position:absolute; 
+				bottom:18%; 
+				width:40px; 
+				height:40px;       
+				border:#444 solid medium; 
+				border-radius:50%; 
+				left:1%; 
+				background-color: transparent;
+				background-color: pink;
+			}
+	
+			button.sound{
+				position:absolute; 
+				bottom:5%;  
+				left:1%; 
+				background-color: transparent;
+				border: none;
+			}
+	
+			img.micImg{
+				background-color: transparent;
+				width: 30px;
+				height: 30px;
+				position:absolute;
+				bottom: 2px;
+				right: 2px;
+			}
+	
+			img.btnExit{
+				position: absolute;
+				background-color: rgb(177, 34, 34);
+				width: 35px;
+				height: 35px;
+				bottom: 2px;
+				right: 2px;
+			}
+	
+			img.imgSound{
+				position: absolute;
+				background-color:transparent;
+				width: 35px;
+				height: 35px;
+				position:absolute;
+				bottom: 2px;
+				left:1%;
+			}
+	
+		</style>
+	</head>
+	<body>
+
+		<button class="vr" id="btnVr">Enter VR</button>
+		<button class="fs" id="botesconder" >Full screen</button>  
+		<button class="ex" id="sair"><img class="btnExit" src="./assets//exit.png"></button> 
+		<button class="mic" id="microfone"><img class="micImg" src="./assets//microphone.png"></button>
+		<button class="sound" id="sounds"><img class="imgSound" src="./assets/sound.png"></button>
+
+		<div id="info">
+			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> vr - interactive cubes
+		</div>
+
+		<!-- Import maps polyfill -->
+		<!-- Remove this when import maps will be widely supported -->
+		<script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+
+		<script type="importmap">
+			{
+			  "imports": {
+				"three": "https://unpkg.com/three@v0.137.0/build/three.module.js",
+				"three/addons/": "https://unpkg.com/three@v0.137.0/examples/jsm/"
+			  }
+			}
+		  </script>
+
+          <script type="module">
+            import { Game } from './main.js';
+            
+            document.addEventListener("DOMContentLoaded", function(){
+                const game = new Game();
+                window.game = game;
+            });
+        </script> 
+
+			
+
+		</script>
+	</body>
+</html>

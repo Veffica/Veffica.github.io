@@ -1,0 +1,333 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color:#fffafa;     
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+}  
+
+
+button.fs:hover{
+    font-size: 20px;
+    background-color: rgb(31, 152, 106);;
+    border-color: black;
+}
+
+button.vr:hover{
+    font-size: 20px;
+    background-color: rgb(31, 152, 106);
+    border-color: black;
+}
+
+button.mic:hover{
+    border-color: rgb(0, 0, 0);
+    background-color: rgb(238, 186, 55);
+}
+
+button.ex:hover{
+    border-color: rgb(175, 33, 33);
+    background-color: rgb(187, 67, 67);
+}
+
+button.fs{
+    position:absolute; 
+    bottom:20px; 
+    left:105px;
+    width:60px; 
+    height:60px;       
+    border:#444 solid medium; 
+    border-width: 2px;
+    border-radius:50%;  
+    background-color: rgb(247, 240, 240);
+    overflow: hidden;
+    float: left;
+    background-size: cover;
+    background-image: url('./images/play.png');
+}
+
+button.vr{
+    position:absolute; 
+    bottom:110px; 
+    left:10px;
+    width:60px; 
+    height:60px;       
+    border:#444 solid medium; 
+    border-width: 2px;
+    border-radius:50%;  
+    background-color: rgb(247, 240, 240);
+    overflow: hidden;
+    float: left;
+    background-size: cover;
+    background-image: url('./images/vr-glasses.png');
+    opacity: 1;
+}
+
+
+button.mic{
+    position:absolute; 
+    bottom:25px; 
+    left:110px;
+    width:40px; 
+    height:40px;       
+    border:#444 solid medium; 
+    border-width: 2px;
+    border-radius:50%;  
+    background-color: rgb(247, 240, 240);
+    overflow: hidden;
+    float: left;
+    background-size: cover;
+    background-image: url('./images/microphone.png');
+}
+
+button.ex{
+    position:absolute; 
+    bottom:115px; 
+    left:10px;
+    width:40px; 
+    height:40px;       
+    border:#444 solid medium; 
+    border-width: 2px;
+    border-radius:50%;  
+    background-color: rgb(247, 240, 240);
+    overflow: hidden;
+    float: left;
+    background-size: cover;
+    background-image: url('./images/cross.png');
+}
+
+ul {
+  list-style-type: none;
+}
+/*
+.score{
+    border:#444 solid medium; 
+    border-radius:10%; 
+    position: absolute;
+    background-color:antiquewhite;
+    width: 50px;
+    height: 35px;
+    left:65px;
+    bottom: 90px;
+    overflow: hidden;
+    float: left;
+    background-size: cover;
+    border-width: 2px;
+}*/
+
+.joyOne{
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background:rgba(126, 126, 126, 0.5);
+    border:#444 solid medium; 
+    border-radius:50%;
+    bottom: 1%;
+    left: 1%;
+    opacity: 1.0;
+
+}
+
+.joyTwo{
+    position:absolute;
+    left: 22.5%;
+    bottom: 22.5%;
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    background: #fff;
+    opacity: 1.0;
+}
+
+.sound{
+    border:#444 solid medium; 
+    border-radius:50%; 
+    position: absolute;
+    background-color: transparent;
+    width: 35px;
+    height: 35px;
+    left:6%;
+    bottom: 12%;
+    overflow: hidden;
+    float: left;
+    background-image: url('./images/sound.png');
+    background-size: cover;
+}
+
+.semiCirculo{
+    left: 100%;
+    bottom: 100%;
+}
+
+.scoreScreen{
+    position: absolute;
+    color: #fffafa;
+    background-color: rgb(234, 239, 234);
+    width: 110px;
+    height: 60px;
+    right: 10px;
+    top:8px;
+    border-radius: 15%;
+}
+
+.scorePicture{
+    position: absolute;
+    background-color: transparent;
+    max-width: 50px;
+    max-height: 50px;
+    content: url('./images/wallet.png');
+    overflow: hidden;
+    float: left;
+    border: none;
+    left: 5%;
+    bottom: 10%;
+}
+
+.scoreNumber{
+    position: absolute;
+    font-size:x-large;
+    text-align: left;
+    background-color: transparent;
+    color: black;
+    max-width: 50px;
+    max-height: 40px;
+    left: 52%;
+    border-radius: 30%;
+    top: 20%;
+}
+
+.nombre{
+    position: absolute;
+    color: #fffafa;
+    background-color: transparent;
+    max-width: 500px;
+    max-height: 60px;
+    left: 40%;
+    top:8px;
+}
+
+.realNome{
+    position: absolute;
+    font-size:large;
+    text-align: left;
+    background-color: transparent;
+    color: black;
+    max-width: 460px;
+    max-height: 40px;
+    left: 5%;
+    top: 20%;
+}
+
+.sair{
+    position: absolute;
+    text-align: center;
+    background-color: red;
+    bottom: 97%;
+    width: 50px;
+    height: 25px;
+    left: 97%;
+}
+
+.top-right-quarter-circle {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 0 180px 0 0;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    background-color: rgba(196, 196, 196, 1);
+    opacity: 0.3;
+    bottom: 0;
+  }
+  
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    overflow: auto;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  .borda{
+          border-radius: 50%;
+
+  }
+  
+  #main {
+    transition: margin-left .5s;
+    padding: 16px;
+  }
+  
+ /* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 500px) {
+    .navbar a {
+      float: none;
+      display: block;
+      width: 100%;
+      text-align: left; /* If you want the text to be left-aligned on small screens */
+    }
+  }
+  
+  #message {
+    display:none;
+    background: #f1f1f1;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+  }
+  
+  #message p {
+    padding: 10px 35px;
+    font-size: 18px;
+  }
+  
+  /* Add a green text color and a checkmark when the requirements are right */
+  .valid {
+    color: green;
+  }
+  
+  .valid:before {
+    position: relative;
+    left: -35px;
+    content: "✔";
+  }
+  
+  /* Add a red text color and an "x" when the requirements are wrong */
+  .invalid {
+    color: red;
+  }
+  
+  .invalid:before {
+    position: relative;
+    left: -35px;
+    content: "✖";
+  }

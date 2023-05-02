@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--favicon -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../css/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../css/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../css/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../css/favicon/site.webmanifest">
+    <link rel="mask-icon" href="../../css/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+      
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color:#fffafa;     
+            width: 100%;
+            min-height: 100%;
+            overflow: hidden;
+        }  
+
+
+        button.fs:hover{
+            font-size: 30px;
+            background-color: green;
+            border-color: black;
+        }
+
+        button.vr:hover{
+            font-size: 30px;
+            background-color: green;
+            border-color: black;
+        }
+
+        button.mic:hover{
+            border-color: black;
+        }
+
+        button.vr{
+            position:absolute; 
+            bottom:30%; 
+            width:200px; 
+            height:40px; 
+            background:rgba(126, 126, 126, 0.5); 
+            border:#444 solid medium;
+            border-radius:5px;
+            left:45%; 
+            font-size: 15px;
+            
+        }
+
+        button.fs{
+            position:absolute; 
+            bottom:45%; 
+            width:200px; 
+            height:40px; 
+            background:rgba(126, 126, 126, 0.5); 
+            border:#444 solid medium;
+            border-radius:5px;
+            left:45%; 
+            opacity: 1.0;
+
+        }
+
+        button.ex{
+            position:absolute; 
+            margin: 0px;
+            padding: 0px;
+            bottom:91%; 
+            width:35px; 
+            height:35px; 
+            border-width: 0px;
+            background:transparent; 
+            left:95%
+        }
+
+        button.mic{
+            position:absolute; 
+            bottom:18%; 
+            width:40px; 
+            height:40px;       
+            border:#444 solid medium; 
+            border-radius:50%; 
+            left:1%; 
+            background-color: transparent;
+            background-color: pink;
+        }
+
+        button.sound{
+            position:absolute; 
+            bottom:5%;  
+            left:1%; 
+            background-color: transparent;
+            border: none;
+        }
+
+        img.micImg{
+            background-color: transparent;
+            width: 30px;
+            height: 30px;
+            position:absolute;
+            bottom: 2px;
+            right: 2px;
+        }
+
+        img.btnExit{
+            position: absolute;
+            background-color: rgb(177, 34, 34);
+            width: 35px;
+            height: 35px;
+            bottom: 2px;
+            right: 2px;
+        }
+
+        img.imgSound{
+            position: absolute;
+            background-color:transparent;
+            width: 35px;
+            height: 35px;
+            position:absolute;
+            bottom: 2px;
+            left:1%;
+        }
+
+    </style>
+  
+    <title>Lecture 6.15</title>
+   
+</head>
+<body id="corpo">
+
+    <button class="vr" id="btnVr">Enter VR</button>
+    <button class="fs" id="botesconder" >Full screen</button>  
+    <button class="ex" id="sair"><img class="btnExit" src="./assets//exit.png"></button> 
+    <button class="mic" id="microfone"><img class="micImg" src="./assets//microphone.png"></button>
+    <button class="sound" id="sounds"><img class="imgSound" src="./assets/sound.png"></button>
+    
+
+<!--    <canvas id="quadro"> -->
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://unpkg.com/three@v0.149.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@v0.149.0/examples/jsm/"
+          }
+        }
+      </script>
+    
+        <script type="module">
+            import { Game } from './game.js';
+            
+            document.addEventListener("DOMContentLoaded", function(){
+                const game = new Game();
+                window.game = game;
+            });
+        </script> 
+
+<!--    </canvas>  -->
+</div>
+</body>
+</html>
